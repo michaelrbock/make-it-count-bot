@@ -225,9 +225,10 @@ class WebhookHandler(BaseHandler):
       state = payload.split('_')[1]
       states = get_states()
       # 4
-      self.send_button_message(sender_id, {'text': 'Your state as a %s chance '
-        'of tipping the election.' % states[state]['tipping_point_chance'],
-        'button_title' : 'Interesting, go on...', 'payload': '4_' + state})
+      self.send_button_message(sender_id, {'text': states[state]['full_name'] +
+        ' has a %s chance of tipping the election.' %
+        states[state]['tipping_point_chance'], 'button_title' :
+        'Interesting, go on...', 'payload': '4_' + state})
     elif payload[0] == '4':
       state = payload.split('_')[1]
       states = get_states()
